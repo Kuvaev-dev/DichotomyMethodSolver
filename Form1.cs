@@ -104,5 +104,12 @@ namespace DichotomyMethodSolver
         {
 
         }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            LeftBoundTextBox.Clear();
+            RightBoundTextBox.Clear();
+            EpsilonTextBox.Clear();
+        }
     }
 }

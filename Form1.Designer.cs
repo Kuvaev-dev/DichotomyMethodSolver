@@ -40,6 +40,7 @@
             label4 = new Label();
             textBox1 = new TextBox();
             label5 = new Label();
+            ClearButton = new Button();
             SuspendLayout();
             // 
             // LeftBoundTextBox
@@ -72,7 +73,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(75, 303);
+            button1.Location = new Point(164, 303);
             button1.Name = "button1";
             button1.Size = new Size(149, 23);
             button1.TabIndex = 4;
@@ -82,7 +83,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(256, 303);
+            button2.Location = new Point(256, 345);
             button2.Name = "button2";
             button2.Size = new Size(149, 23);
             button2.TabIndex = 5;
@@ -144,12 +145,23 @@
             label5.TabIndex = 11;
             label5.Text = "Функція поліному за замовчуванням:";
             // 
+            // ClearButton
+            // 
+            ClearButton.Location = new Point(75, 345);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(149, 23);
+            ClearButton.TabIndex = 12;
+            ClearButton.Text = "Очистити все";
+            ClearButton.UseVisualStyleBackColor = true;
+            ClearButton.Click += ClearButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(496, 381);
+            ClientSize = new Size(496, 416);
+            Controls.Add(ClearButton);
             Controls.Add(label5);
             Controls.Add(textBox1);
             Controls.Add(label4);
@@ -163,7 +175,6 @@
             Controls.Add(RightBoundTextBox);
             Controls.Add(LeftBoundTextBox);
             MaximizeBox = false;
-            MaximumSize = new Size(512, 420);
             MinimumSize = new Size(512, 420);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
@@ -187,5 +198,6 @@
         private Label label4;
         private TextBox textBox1;
         private Label label5;
+        private Button ClearButton;
     }
 }
