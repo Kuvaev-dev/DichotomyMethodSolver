@@ -7,7 +7,7 @@ namespace DichotomyMethodSolver
             InitializeComponent();
         }
 
-        // Функція для полінома
+        // Функція для обчислення значення полінома F(x) = x^2 - 9x + 14
         private double Function(double x)
         {
             return x * x - 9 * x + 14;
@@ -25,17 +25,20 @@ namespace DichotomyMethodSolver
             double c;
             while ((b - a) / 2 > eps)
             {
+                // Знаходимо середину інтервалу
                 c = (a + b) / 2;
                 if (Function(a) * Function(c) > 0)
                 {
+                    // Зміщуємо ліву межу інтервалу до середини
                     a = c;
                 }
                 else
                 {
+                    // Зміщуємо праву межу інтервалу до середини
                     b = c;
                 }
             }
-            return (a + b) / 2;
+            return (a + b) / 2; // Повертаємо знайдений корінь
         }
 
         private void SearchZeroButton_Click(object sender, EventArgs e)
@@ -51,7 +54,7 @@ namespace DichotomyMethodSolver
                 }
                 catch (ArgumentException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Вивести повідомлення про помилку, якщо інтервал задано некоректно
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
