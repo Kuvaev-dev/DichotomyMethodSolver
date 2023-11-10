@@ -7,10 +7,10 @@ namespace DichotomyMethodSolver
             InitializeComponent();
         }
 
-        // Функція для обчислення значення полінома F(x) = x^2 - 9x + 14
+        // Функція для обчислення значення полінома F(x) = x^3 - 1.2x + 1
         private double Function(double x)
         {
-            return x * x - 9 * x + 14;
+            return Math.Pow(x, 3) - (1.2 * x) + 1;
         }
 
         // Функція пошуку кореня методом дихотомії
