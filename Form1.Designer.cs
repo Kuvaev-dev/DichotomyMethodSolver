@@ -98,7 +98,7 @@
             label1.Name = "label1";
             label1.Size = new Size(134, 15);
             label1.TabIndex = 6;
-            label1.Text = "Ліва границя поліному";
+            label1.Text = "Ліва границя інтервалу";
             // 
             // label2
             // 
@@ -107,7 +107,7 @@
             label2.Name = "label2";
             label2.Size = new Size(145, 15);
             label2.TabIndex = 7;
-            label2.Text = "Права границя поліному";
+            label2.Text = "Права границя інтервалу";
             // 
             // label3
             // 
@@ -134,16 +134,16 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(330, 23);
             textBox1.TabIndex = 10;
-            textBox1.Text = "x * x - 9 * x + 14";
+            textBox1.Text = "x^3 - 1.2x + 1";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(75, 28);
             label5.Name = "label5";
-            label5.Size = new Size(214, 15);
+            label5.Size = new Size(158, 15);
             label5.TabIndex = 11;
-            label5.Text = "Функція поліному за замовчуванням:";
+            label5.Text = "Функція за замовчуванням:";
             // 
             // ClearButton
             // 

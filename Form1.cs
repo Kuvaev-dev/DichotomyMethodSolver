@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace DichotomyMethodSolver
 {
     public partial class Form1 : Form
@@ -14,16 +16,17 @@ namespace DichotomyMethodSolver
         }
 
         // Функція пошуку кореня методом дихотомії
-        private double FindRoot(double a, double b, double eps)
+        private double FindRoot(double a, double b, double eps, int maxIterations = 1000)
         {
             // Перевірка, чи функція має різний знак на лівому та правому краях інтервалу
             if (Function(a) * Function(b) > 0)
             {
-                throw new ArgumentException("Неправильний інтервал: f(a) і f(b) мають один і той же знак.");
+                throw new InvalidOperationException("Неправильний інтервал: f(a) і f(b) мають один і той же знак.");
             }
 
             double c;
-            while ((b - a) / 2 > eps)
+            int iterations = 0;
+            do
             {
                 // Знаходимо середину інтервалу
                 c = (a + b) / 2;
@@ -37,8 +40,15 @@ namespace DichotomyMethodSolver
                     // Зміщуємо праву межу інтервалу до середини
                     b = c;
                 }
-            }
-            return (a + b) / 2; // Повертаємо знайдений корінь
+
+                iterations++;
+                if (iterations > maxIterations)
+                {
+                    throw new InvalidOperationException("Досягнута максимальна кількість ітерацій. Можливо, точність задана занадто великою.");
+                }
+            } while (Math.Abs(Function(c)) > eps && iterations <= maxIterations);
+
+            return c; // Повертаємо знайдений корінь
         }
 
         private void SearchZeroButton_Click(object sender, EventArgs e)
@@ -50,9 +60,9 @@ namespace DichotomyMethodSolver
                 try
                 {
                     double result = FindRoot(leftBound, rightBound, epsilon);
-                    ResultTextBox.Text = result.ToString();
+                    ResultTextBox.Text = result.ToString(CultureInfo.InvariantCulture).Replace('.', ',');
                 }
-                catch (ArgumentException ex)
+                catch (InvalidOperationException ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -67,7 +77,7 @@ namespace DichotomyMethodSolver
         {
             if (double.TryParse(ResultTextBox.Text, out double result))
             {
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                using (SaveFileDialog saveFileDialog = new())
                 {
                     saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -92,7 +102,7 @@ namespace DichotomyMethodSolver
             double leftBound = double.Parse(LeftBoundTextBox.Text);
             double rightBound = double.Parse(RightBoundTextBox.Text);
             double epsilon = double.Parse(EpsilonTextBox.Text);
-            string functionDescription = "Функція F(x) = x^2 - 9x + 14";
+            string functionDescription = "Функція F(x) = x^3 - 1.2x + 1";
 
             string content = $"Ліва межа інтервалу: {leftBound}\n";
             content += $"Права межа інтервалу: {rightBound}\n";
